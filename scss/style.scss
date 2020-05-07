@@ -1,10 +1,55 @@
 $color-main: red;
-$color-secondary: black;
+$color-secondary: lightblue;
+$color-border : black;
+$color-background: orange;
 
-.body{
-  background-color:  $color-main;
+.form{
+  display: flex;
+  justify-content: space-around;
+  position: fixed;
+  top: 1%;
+  background-color: $color-secondary;
+  width: 100%;
+  height: 10%;
+
+  &_heading{
+    margin: 15px 15px ;
+  }
+  &_addBtn{
+    margin: 15px 15px
+  }
+  #form{
+    padding: 15px;
+    border: 1px solid $color-border;
+    background-color: $color-background;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: none;
+  }
+  &_div{
+    display: flex;
+    justify-content: space-between;
+  }
+  input{
+    margin: 0;
+  }
 }
 
-h1{
-  color: $color-secondary;
+table{
+  margin-top: 10px 0 ;
+  border-collapse: collapse;
+  border: 1px solid $color-border;
 }
+
+td,th{
+  border: 1px solid $color-border;
+  padding: 5px 8px;
+}
+
+
+
+
