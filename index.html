@@ -5,34 +5,34 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./style/style.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>Тестовое задание №1</title>
 </head>
 <body>
+    <header>
+        <h1>Список лечебных учреждений</h1>
+        <button id="add" >Добавить учерждение</button>
+        <form id="form">
+            <div class="form">
+                <label >
+                    <textarea type="text" placeholder="Наименование" name="full_name"></textarea>
+                </label>
+                <label >
+                    <textarea type="text" placeholder="Адрес" name="address"></textarea>
+                </label>
+                <label >
+                    <textarea type="text" placeholder="Телефон" name="phone"></textarea>
+                </label>
 
-<div class="main">
-    <div class="add">
-        <input type="text" placeholder="Наименование" id="add_full_name">
-        <input type="text" placeholder="Адрес" id="add_address">
-        <input type="text" placeholder="Телефон" id="phoneNumber">
-        <button class="addBtn">Добавить</button>
-    </div>
+                <input type="submit" id="cancel" value="Отмена">
+                <input type="submit" id="enter" value="Сохранить">
+            </div>
+        </form>
+    </header>
 
+    <main id="root">
 
-    <div class="table">
-        <div class="table_row table_row-head">
-            <div class="table_cell table_cell-head">Наименование</div>
-            <div class="table_cell table_cell-head">Адрес</div>
-            <div class="table_cell table_cell-head">Телефон</div>
-        </div>
-    </div>
-</div>
-
-
-
-
-    <script src="./src/script.js" type="module"></script>
-    <script src="src/http.js" type="module"></script>
-
+    </main>
+    <script src="src/main.js"></script>
 </body>
 </html>
