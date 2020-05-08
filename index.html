@@ -15,23 +15,33 @@
         <form id="form">
             <div class="form_div">
                 <label >
-                    <textarea type="text" placeholder="Наименование" name="full_name"></textarea>
+                    <input type="text" name="full_name" placeholder="Название" id="full_name">
                 </label>
                 <label >
-                    <textarea type="text" placeholder="Адрес" name="address"></textarea>
+                    <input type="text" name="address" placeholder="Адрес" id="address">
                 </label>
                 <label >
-                    <textarea type="text" placeholder="Телефон" name="phone"></textarea>
+                    <input type="text" name="phone" placeholder="Телефон" id="phone">
                 </label>
 
                 <input type="submit" id="cancel" value="Отмена">
-                <input type="submit" id="enter" value="Сохранить">
+                <input type="submit" id="save" value="Сохранить">
             </div>
         </form>
     </header>
 
-    <main id="root">
-
+    <main class="root">
+        <table class="root_table">
+            <thead>
+            <tr>
+                <th>Название</th>
+                <th>Адрес</th>
+                <th>Телефонный номер</th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+        </table>
     </main>
     <script src="src/main.js"></script>
 </body>

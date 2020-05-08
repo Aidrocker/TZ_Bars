@@ -1,184 +1,95 @@
-const form = document.getElementById('form');
-const root = document.getElementById('root');
-const addButton = document.querySelector('.form_addBtn');
+///DOM
+const form = document.getElementById('form'),
+    root = document.getElementById('root') ,
+    addButton = document.querySelector('.form_addBtn'),
+    table = document.querySelector('.root_table'),
+    nameInput = document.getElementById('full_name'),
+    addressInput = document.getElementById('address'),
+    phoneInput = document.getElementById('phone');
+//end DOM
+
 const apiUrl = './json/Ipu.json';
-const table = document.createElement('table');
-
 let items = [];
-let currentRowIndex = null;
-let currentItem = {};
 let isNew = false;
+let id = 5;
 
 
-function getData(success) {
-    const data = localStorage.getItem('data');
-
-    if(data === null){
-        const xhr = new XMLHttpRequest();
-        xhr.open('GET', `${apiUrl}`);
-        xhr.addEventListener('load', () =>{
-            items = JSON.parse(xhr.responseText);
-            success(items);
-        });
-        xhr.send();
-    }
-    items = JSON.parse(data);
-    success(items);
+if(localStorage.getItem('data')){
+    items = JSON.parse(localStorage.getItem('data'));
+    createTable();
+}else{
+    loadata();
 }
 
-function addItem(full_name, address, phone, callback) {
-    const temp_arr = [...items];
-    temp_arr.sort((a, b) => b.id - a.id);
-    const id = Number(temp_arr[0].id) + 1;
-
-    const item = {id:String(id), full_name, address, phone};
-    items.push(item);
-    saveItems();
-    callback(item);
-}
-
-function deleteItem(index) {
-    items.splice(index, 1);
-    saveItems();
-}
-
-function upDateItem(item) {
-    const index = items.findIndex(el => el.id === item.id);
-    items[index]  = item;
-    saveItems()
-}
-
-function saveItems() {
-    localStorage.setItem('data', JSON.stringify(items));
-}
-
-
-function init() {
-    root.appendChild(table);
-
-    form.elements.cancel.addEventListener('click', (e) =>{
-        console.log(form.elements);
-        e.preventDefault();
-        form.style.display = 'none';
-        form.full_name.value =
-            form.phone.value = '';
-        currentRowIndex = null;
-        currentItem = {};
-    });
-
-    form.elements.enter.addEventListener('click', (e) => {
-        e.preventDefault();
-        form.style.display = 'none';
-        isNew ? addNewItem() : upDateRow(currentRowIndex, currentItem);
-    });
-
-    addButton.addEventListener('click', () =>{
-        isNew = true;
-        showForm({
-            full_name: '',
-            address: '',
-            phone: ''
-        });
-    });
-
-    onloadData();
-}
-
-function onloadData() {
-    getData(items =>{
-        showTable(items);
+function loadata (){
+    fetch(apiUrl)
+        .then((response) => {
+        return response.json();
     })
+        .then((data) =>{
+            items = data;
+            localStorage.setItem('data', JSON.stringify(items));
+        })
 }
 
 
-function showTable(items) {
 
-    table.innerHTML = `
-        <thead>
-            <th>Название</th>
-            <th>Адресс</th>
-            <th>Телефон</th>
-            <th></th>
-            <th></th>
-        </thead>
-    `;
-    items.map(item => {
-        const tRow = document.createElement('tr');
-        table.appendChild(tRow);
-        drawTableRow(item, tRow, () => {})
-    })
-}
+function createTable() {
+    console.log(items);
+    items.forEach((item) =>{
+        const trEl = document.createElement('tr');
+        const { id,full_name, address, phone} = item;
+        const elem =
+            `
+        <tr>
+            <td>${full_name}</td>
+            <td>${address}</td>
+            <td>${phone}</td>
+            <td><button class="change" id="${id}">Изменить</button></td>
+            <td><button class="delete" id="${id}">Удалить</button></td>
+        </tr>
+        `;
+        trEl.innerHTML = elem;
+        table.appendChild(trEl);
 
-function drawTableRow(item, tRow, callback) {
-    const {full_name,address, phone} = item;
-
-    tRow.innerHtml = `
-        <td>${full_name}</td>
-        <td>${address}</td>
-        <td>${phone}</td>
-        <td><button id="upButton"><img src="../img/change.jpg" alt="Change" height="20px"></button></td>
-        <td><button id="delButton"><img src="../img/trash.jpg" alt="Trash" height="20px"></button></td>
-       
-    `;
-    callback();
-
-    const upButton = tRow.getElementById('upButton');
-    const delButton = tRow.getElementById('delButton');
-
-    upButton.addEventListener('click', () =>{
-        isNew = false;
-        currentRowIndex = tRow.rowIndex;
-        currentItem = item;
-        showForm(item);
+    });
+    const changeBtn = document.getElementById('change');
+    const deleteBtn = document.querySelector('.delete');
+    deleteBtn.addEventListener('click', (event)=>{
+        console.log(items);
     });
 
-    delButton.addEventListener('click', ()=>{
-        form.style.display = 'none';
-        const choice  = confirm('Удалить обькт?');
-        if(choice){
-            deleteItem(tRow.rowIndex);
-            table.removeChild(tRow)
-        }
-    })
+
+
 }
 
-function showForm(item) {
+addButton.addEventListener('click', ()=>{
     form.style.display = 'block';
+    const cancelBtn = document.getElementById('cancel');
+    const saveBtn = document.getElementById('save');
 
-    form.elements.full_name.value = item.full_name;
-    form.elements.address.value = item.address;
-    form.elements.phone.value = item.phone;
-}
+    saveBtn.addEventListener('click', ()=>{
+        let item = {
+            id: ++id,
+            full_name : nameInput.value,
+            address: addressInput.value,
+            phone: phoneInput.value
+        };
+        items.push(item);
+        localStorage.setItem('data', JSON.stringify(items));
+        createTable();
+    });
 
-
-function addNewItem() {
-    addItem(
-        form.full_name.value,
-        form.address.value,
-        form.phone.value,
-        item =>{
-            const tRow = document.createElement('tr');
-            table.appendChild(tRow);
-            drawTableRow(item, tRow, () =>{
-                alert('Обьект добавлен!')
-            });
-        }
-    )
-}
-
-function upDateRow(index, item) {
-    item.full_name = form.elements.full_name.value;
-    item.address = form.elements.address.value;
-    item.phone = form.elements.phone.value;
-
-
-    upDateItem(item);
-
-    table.rows[index].innerHTML = '';
-    drawTableRow(item,table.rows[index], ()=>{
-        alert('Обьект обновлен!')
+    cancelBtn.addEventListener('click', ()=>{
+        form.style.display = 'none';
     })
-}
+});
 
 
-init();
+
+
+
+
+
+
+

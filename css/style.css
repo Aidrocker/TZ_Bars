@@ -28,10 +28,10 @@
     margin: 0; }
 
 table {
-  margin-top: 10px 0;
+  margin-top: 100px;
   border-collapse: collapse;
   border: 1px solid black; }
 
 td, th {
   border: 1px solid black;
-  padding: 5px 8px; }
+  padding: 15px 15px; }
