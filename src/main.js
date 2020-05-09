@@ -1,3 +1,4 @@
+import {Methods} from './methods.js';
 ///DOM
 const form = document.getElementById('form'),
     root = document.getElementById('root') ,
@@ -13,15 +14,16 @@ let items = [];
 let isNew = false;
 let id = 5;
 
+const deleteItem = () => {
+    console.log('1');
+};
 
-if(localStorage.getItem('data')){
-    items = JSON.parse(localStorage.getItem('data'));
-    createTable();
-}else{
-    loadata();
-}
+loadData();
+items = JSON.parse(localStorage.getItem('data'));
+createTable();
 
-function loadata (){
+
+function loadData (){
     fetch(apiUrl)
         .then((response) => {
         return response.json();
@@ -31,8 +33,6 @@ function loadata (){
             localStorage.setItem('data', JSON.stringify(items));
         })
 }
-
-
 
 function createTable() {
     console.log(items);
@@ -45,21 +45,13 @@ function createTable() {
             <td>${full_name}</td>
             <td>${address}</td>
             <td>${phone}</td>
-            <td><button class="change" id="${id}">Изменить</button></td>
-            <td><button class="delete" id="${id}">Удалить</button></td>
+            <td><button class="change"  id="${id}">Изменить</button></td>
+            <td><button class="delete"  id="${id}">Удалить</button></td>
         </tr>
         `;
         trEl.innerHTML = elem;
         table.appendChild(trEl);
-
     });
-    const changeBtn = document.getElementById('change');
-    const deleteBtn = document.querySelector('.delete');
-    deleteBtn.addEventListener('click', (event)=>{
-        console.log(items);
-    });
-
-
 
 }
 
