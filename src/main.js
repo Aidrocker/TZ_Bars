@@ -1,4 +1,4 @@
-
+// import Ipu from '../json/Ipu.json';
 ///DOM
 const form = document.getElementById('form'),
     root = document.querySelector('.root') ,
@@ -7,13 +7,18 @@ const form = document.getElementById('form'),
     nameInput = document.getElementById('full_name'),
     addressInput = document.getElementById('address'),
     phoneInput = document.getElementById('phone');
+const cancelBtn = document.getElementById('cancel');
+const saveBtn = document.getElementById('save');
 //end DOM
-
 const apiUrl = './json/Ipu.json';
-let items = [];
-let isNew = false;
-let id = 5;
 const isData = localStorage.getItem('data');
+
+let currentRowIndex = null;
+let currentItem = {};
+let items = [];
+let isNewObject = false;
+let id = 5;
+
 
 if (isData){
      items = JSON.parse(localStorage.getItem('data'));
@@ -70,25 +75,27 @@ function drawTableRow(item,table, trEl, callback){
     const changeBtn = trEl.querySelector('.change');
 
     delBtn.addEventListener('click', () =>{
-        console.log('before',items);
         items.splice(trEl.rowIndex - 1, 1);
-
-        console.log('after',items);
-
         localStorage.setItem('data', JSON.stringify(items));
-
-        console.log('local',localStorage.getItem('data', JSON.stringify('items')));
         table.removeChild(trEl);
     });
+
+    changeBtn.addEventListener('click', ()=>{
+        isNewObject = false;
+        form.style.display = 'block';
+        currentRowIndex = trEl.rowIndex;
+        currentItem = item;
+        showForm(item);
+    })
 }
 
 addButton.addEventListener('click', ()=>{
-    isNew = true;
+    isNewObject = true;
     form.style.display = 'block';
-    const cancelBtn = document.getElementById('cancel');
-    const saveBtn = document.getElementById('save');
+});
 
-    saveBtn.addEventListener('click', ()=>{
+saveBtn.addEventListener('click', ()=>{
+    if(isNewObject){
         let item = {
             id: ++id,
             full_name : nameInput.value,
@@ -97,14 +104,44 @@ addButton.addEventListener('click', ()=>{
         };
         items.push(item);
         localStorage.setItem('data', JSON.stringify(items));
-        createTable();
-    });
-
-    cancelBtn.addEventListener('click', ()=>{
-        form.style.display = 'none';
-
-    })
+        createTable()
+    }else{
+        console.log(isNewObject);
+        updateRow(currentRowIndex, currentItem);
+    }
 });
+
+cancelBtn.addEventListener('click', ()=>{
+    form.style.display = 'none';
+});
+
+function updateRow(index, item) {
+    console.log('updateRow',isNewObject);
+    item.full_name = nameInput.value;
+    item.address = addressInput.value;
+    item.phone = phoneInput.value;
+
+    updateItem(item);
+
+    table.rows[index].innerHTML = '';
+    drawTableRow(item, table.rows[index],()=>{
+        console.log('изменен');
+    })
+}
+
+function showForm(item) {
+    form.style.display = 'block';
+    nameInput.value = item.full_name;
+    addressInput.value = item.address;
+    phoneInput.value = item.phone;
+}
+
+function updateItem(item) {
+    console.log('updateItem',isNewObject);
+    const index = items.findIndex(el => el.id === item.id);
+    items[index] = item;
+    localStorage.setItem('data', JSON.stringify(items));
+}
 
 
 
