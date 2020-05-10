@@ -13,11 +13,12 @@ const apiUrl = './json/Ipu.json';
 let items = [];
 let isNew = false;
 let id = 5;
+const isData = localStorage.getItem('data');
 
-if (!localStorage.getItem('data')){
+if (isData){
      items = JSON.parse(localStorage.getItem('data'));
     createTable();
-}else{
+}else if(!isData){
     loadData();
      items = JSON.parse(localStorage.getItem('data'));
     createTable();
@@ -66,7 +67,7 @@ function drawTableRow(item,table, trEl, callback){
         `;
     callback();
     const delBtn = trEl.querySelector('.delete');
-    const changeBtn = document.getElementById('changeBtn');
+    const changeBtn = trEl.querySelector('.change');
 
     delBtn.addEventListener('click', () =>{
         console.log('before',items);
@@ -78,11 +79,11 @@ function drawTableRow(item,table, trEl, callback){
 
         console.log('local',localStorage.getItem('data', JSON.stringify('items')));
         table.removeChild(trEl);
-    })
-
+    });
 }
 
 addButton.addEventListener('click', ()=>{
+    isNew = true;
     form.style.display = 'block';
     const cancelBtn = document.getElementById('cancel');
     const saveBtn = document.getElementById('save');
@@ -101,6 +102,7 @@ addButton.addEventListener('click', ()=>{
 
     cancelBtn.addEventListener('click', ()=>{
         form.style.display = 'none';
+
     })
 });
 
