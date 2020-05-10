@@ -4,9 +4,9 @@ const browserSync = require('browser-sync');
 
 
 function style() {
-    return  gulp.src('./scss/**/*.scss')
+    return  gulp.src('./style/**/*.scss')
         .pipe(sass())
-        .pipe(gulp.dest('./css'))
+        .pipe(gulp.dest('./style'))
         .pipe(browserSync.stream())
 }
 
