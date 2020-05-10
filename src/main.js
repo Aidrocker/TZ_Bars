@@ -1,7 +1,7 @@
-import {Methods} from './methods.js';
+
 ///DOM
 const form = document.getElementById('form'),
-    root = document.getElementById('root') ,
+    root = document.querySelector('.root') ,
     addButton = document.querySelector('.form_addBtn'),
     table = document.querySelector('.root_table'),
     nameInput = document.getElementById('full_name'),
@@ -14,14 +14,14 @@ let items = [];
 let isNew = false;
 let id = 5;
 
-const deleteItem = () => {
-    console.log('1');
-};
-
-loadData();
-items = JSON.parse(localStorage.getItem('data'));
-createTable();
-
+if (!localStorage.getItem('data')){
+     items = JSON.parse(localStorage.getItem('data'));
+    createTable();
+}else{
+    loadData();
+     items = JSON.parse(localStorage.getItem('data'));
+    createTable();
+}
 
 function loadData (){
     fetch(apiUrl)
@@ -35,23 +35,50 @@ function loadData (){
 }
 
 function createTable() {
-    console.log(items);
+    const table = document.createElement('table');
+    root.appendChild(table);
+    table.innerHTML = `
+        <thead>
+            <th>Название</th>
+            <th>Адрес</th>
+            <th>Телефон</th>
+            <th></th>
+            <th></th>
+        </thead>
+    `;
     items.forEach((item) =>{
         const trEl = document.createElement('tr');
-        const { id,full_name, address, phone} = item;
-        const elem =
-            `
+        table.appendChild(trEl);
+        drawTableRow(item,table, trEl, ()=>{});
+    });
+}
+
+function drawTableRow(item,table, trEl, callback){
+
+    trEl.innerHTML =`
         <tr>
-            <td>${full_name}</td>
-            <td>${address}</td>
-            <td>${phone}</td>
-            <td><button class="change"  id="${id}">Изменить</button></td>
-            <td><button class="delete"  id="${id}">Удалить</button></td>
+            <td>${item.full_name}</td>
+            <td>${item.address}</td>
+            <td>${item.phone}</td>
+            <td><button class="change"  id="changeBtn">Изменить</button></td>
+            <td><button  class = "delete" id="delBtn">Удалить</button></td>
         </tr>
         `;
-        trEl.innerHTML = elem;
-        table.appendChild(trEl);
-    });
+    callback();
+    const delBtn = trEl.querySelector('.delete');
+    const changeBtn = document.getElementById('changeBtn');
+
+    delBtn.addEventListener('click', () =>{
+        console.log('before',items);
+        items.splice(trEl.rowIndex - 1, 1);
+
+        console.log('after',items);
+
+        localStorage.setItem('data', JSON.stringify(items));
+
+        console.log('local',localStorage.getItem('data', JSON.stringify('items')));
+        table.removeChild(trEl);
+    })
 
 }
 
