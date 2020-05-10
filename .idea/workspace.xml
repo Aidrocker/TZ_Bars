@@ -2,8 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="61f60412-48b0-4744-838b-9db0a42a9890" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/bs-recipes/recipes/webpack.monkey-hot-loader/desc.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/bs-recipes/recipes/webpack.monkey-hot-loader/desc.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/bs-recipes/recipes/webpack.monkey-hot-loader/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/bs-recipes/recipes/webpack.monkey-hot-loader/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/resolve/readme.markdown" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/resolve/readme.markdown" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/resolve/test/module_dir.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/resolve/test/module_dir.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/resolve/test/resolver.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/resolve/test/resolver.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +40,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="settings.editor.selected.configurable" value="configurable.group.build" />
   </component>
   <component name="RecentsManager">
@@ -39,12 +49,12 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="main.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/main.js" working-dir="$PROJECT_DIR$/src">
+    <configuration name="app.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/app.js" working-dir="$PROJECT_DIR$/src">
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Node.js.main.js" />
+        <item itemvalue="Node.js.app.js" />
       </list>
     </recent_temporary>
   </component>
@@ -68,7 +78,7 @@
       <workItem from="1588955387369" duration="3213000" />
       <workItem from="1588959840218" duration="4983000" />
       <workItem from="1589098058733" duration="288000" />
-      <workItem from="1589098690908" duration="13978000" />
+      <workItem from="1589098690908" duration="15199000" />
     </task>
     <servers />
   </component>

@@ -1,4 +1,3 @@
-// import Ipu from '../json/Ipu.json';
 ///DOM
 const form = document.getElementById('form'),
     root = document.querySelector('.root') ,
@@ -6,9 +5,9 @@ const form = document.getElementById('form'),
     table = document.querySelector('.root_table'),
     nameInput = document.getElementById('full_name'),
     addressInput = document.getElementById('address'),
-    phoneInput = document.getElementById('phone');
-const cancelBtn = document.getElementById('cancel');
-const saveBtn = document.getElementById('save');
+    phoneInput = document.getElementById('phone'),
+    cancelBtn = document.getElementById('cancel'),
+    saveBtn = document.getElementById('save');
 //end DOM
 const apiUrl = './json/Ipu.json';
 const isData = localStorage.getItem('data');
@@ -20,7 +19,7 @@ let isNewObject = false;
 let id = 5;
 
 
-if (isData){
+if(isData){
      items = JSON.parse(localStorage.getItem('data'));
     createTable();
 }else if(!isData){
