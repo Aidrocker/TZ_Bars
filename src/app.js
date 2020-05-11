@@ -1,7 +1,7 @@
 ///DOM
 const form = document.getElementById("form"),
   root = document.querySelector(".root"),
-  addButton = document.querySelector(".form_addBtn"),
+  addButton = document.querySelector("#addBtn"),
   table = document.querySelector(".root_table"),
   nameInput = document.getElementById("full_name"),
   addressInput = document.getElementById("address"),
@@ -67,8 +67,8 @@ function drawTableRow(item, table, trEl, callback) {
             <td>${item.full_name}</td>
             <td>${item.address}</td>
             <td>${item.phone}</td>
-            <td><button class="change"  id="changeBtn">Изменить</button></td>
-            <td><button  class = "delete" id="delBtn">Удалить</button></td>
+            <td><button class="change"  id="changeBtn"><img src="../public/img/change.jpg" alt=""></button></td>
+            <td><button  class = "delete" id="delBtn"><img src="../public/img/trash.jpg" alt=""></button></td>
         </tr>
         `;
   callback();

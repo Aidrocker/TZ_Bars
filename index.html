@@ -5,13 +5,20 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="public/style/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./public/sass/style.css">
     <title>Тестовое задание №1</title>
 </head>
 <body>
     <header class="form">
-        <h1 class="form_heading">Список лечебных учреждений</h1>
-        <button class="form_addBtn">Добавить учерждение</button>
+        <div class="form_header">
+            <div class="form_header_text">
+                <p class="form_heading">Список лечебных учреждений</p>
+            </div>
+            <div class="form_header_btn">
+                <button id="addBtn" class="addBtn">Добавить учреждение</button>
+            </div>
+        </div>
         <form id="form">
             <div class="form_div">
                 <label >
@@ -23,9 +30,10 @@
                 <label >
                     <input type="text" name="phone" placeholder="Телефон" id="phone">
                 </label>
-
-                <input type="submit" id="cancel" value="Отмена">
-                <input type="submit" id="save" value="Сохранить">
+                <div class="btns">
+                    <button type="submit" id="cancel"><img src="./public/svg/interface.svg" alt=""></button>
+                    <button type="submit" id="save"><img src="./public/svg/floppy-disk.svg" alt=""></button>
+                </div>
             </div>
         </form>
     </header>

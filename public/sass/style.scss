@@ -1,0 +1,215 @@
+//start variables
+$color-main: red;
+$color-secondary: white;
+$color-border : #80CCFC;
+
+$color-table-background: #80CCFC;
+$color-table-row-background: #95D0F7;
+$color-form-background: #FEF8E9;
+$color-form-input: #E7D4A1;
+$btn-color:#80CCFC;
+$btn-color_hover: #78B5DC;
+$box-shadow: 1px 5px 20px -12px #7E7E7E;
+$font-Montserrat: 'Montserrat', sans-serif;
+//end variables
+
+body{
+  margin: 0 auto;
+}
+
+//style for header
+.form{
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 1%;
+  background-color: $color-secondary;
+  width: 100%;
+  height: 10%;
+
+  //style for button and text
+  &_header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+
+    //style for text<p>
+    &_text{
+      font-family: $font-Montserrat;
+      border: 2px solid $color-border;
+      border-radius: 30px;
+      width: 440px;
+      height: 47px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow:  $box-shadow;
+    }
+    //end style for text<p>
+
+    ///style for add button
+    &_btn{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: 15px;
+
+      .addBtn{
+        border: none;
+        background-color: $btn-color;
+        border-radius: 30px;
+        width: 180px;
+        height: 45px;
+        color: $color-secondary;
+        text-transform: uppercase;
+        font-size: 10px;
+        box-shadow: $box-shadow;
+        font-family: $font-Montserrat;
+      }
+      .addBtn:hover{
+        background-color: $btn-color_hover;
+      }
+      //end style for add button
+    }
+    //end add button
+  }
+  //end style for button and text
+
+  //style for form
+  #form{
+    padding: 15px;
+    margin:  0 auto;
+    border: none;
+    border-radius: 15px;
+    background-color: $color-form-background;
+    position: absolute;
+    display: none;
+  }
+
+  &_div{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 990px;
+    height: 85px;
+  }
+
+  input{
+    width: 150px;
+    height: 25px;
+    border-radius: 30px;
+    border: 1px solid $color-form-input;
+    text-align: center;
+  }
+  #save{
+    width: 35px;
+    height: 35px;
+    border: 1px solid $color-form-input;
+    border-radius: 30px;
+    background-color:  $color-secondary ;
+    transition: all 1s;
+    img{
+      width: 15px;
+      height: 15px;
+    }
+  }
+
+  #save:hover{
+    transform: scale(1.2);
+  }
+
+  #cancel{
+    width: 35px;
+    height: 35px;
+    border: 1px solid $color-form-input;
+    border-radius: 30px;
+    background-color:  $color-secondary ;
+    transition: all 1s;
+  }
+  #cancel:hover{
+    transform: scale(1.2);
+  }
+  img{
+    width: 12px;
+    height: 12px;
+  }
+}
+//end style for form
+//end style for header
+
+
+//style for table
+.root{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+table{
+  margin-top: 200px;
+  width: 1100px;
+  border-collapse: collapse;
+  font-family: $font-Montserrat;
+}
+table th:first-child{
+  border-top-left-radius: 30px;
+}
+table th:last-child{
+  border-top-right-radius: 30px;
+  border-right: none;
+}
+
+th{
+  background-color: $color-table-background;
+  color: $color-secondary;
+  height: 60px;
+  width: 60px;
+  border-right: 3px solid $color-table-row-background;
+}
+tr{
+  height: 80px;
+  word-wrap: break-word;
+}
+
+td{
+  border: 2px solid $color-table-background;
+  text-align: center;
+  font-size: 12px;
+}
+.change{
+  background-color: $color-secondary;
+  border: 1px solid $color-border;
+  border-radius: 30px;
+  transition: all 1s;
+  cursor: pointer;
+}
+
+.change:hover{
+  transform: scale(1.2);
+}
+.change:active{
+  transform: unset;
+}
+.delete{
+  background-color: $color-secondary;
+  border: 1px solid $color-border;
+  border-radius: 30px;
+  transition: all 1s;
+  cursor: pointer;
+}
+
+.delete:hover{
+  transform: scale(1.2);
+}
+.delete:active{
+  transform: unset;
+}
+img{
+  width: 25px;
+  height: 25px;
+}
+//end style for table
+
+
+
+

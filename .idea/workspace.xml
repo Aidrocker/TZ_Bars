@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="61f60412-48b0-4744-838b-9db0a42a9890" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gulpfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/gulpfile.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/style/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/style/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/sass/style.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -74,6 +77,8 @@
       <workItem from="1588959840218" duration="4983000" />
       <workItem from="1589098058733" duration="288000" />
       <workItem from="1589098690908" duration="15199000" />
+      <workItem from="1589134113212" duration="191000" />
+      <workItem from="1589192230875" duration="9454000" />
     </task>
     <servers />
   </component>

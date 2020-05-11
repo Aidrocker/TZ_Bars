@@ -2,12 +2,10 @@ const gulp = require('gulp');
 const sass = require('gulp-sass');
 const browserSync = require('browser-sync');
 
-
 function style() {
-    return  gulp.src('./style/**/*.scss')
+    return gulp.src('./public/**/*.scss')
         .pipe(sass())
-        .pipe(gulp.dest('./style'))
-        .pipe(browserSync.stream())
+        .pipe(gulp.dest('./public'))
 }
 
 function watch(){
@@ -15,9 +13,9 @@ function watch(){
         server: {
             baseDir: './'
         }
-
     });
-    gulp.watch('./scss/**/*.scss', style);
+
+    gulp.watch('./public/**/*.scss', style);
     gulp.watch('./*.html').on('change', browserSync.reload);
 }
 
