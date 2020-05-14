@@ -8,9 +8,8 @@ const form = document.getElementById("form"),
   phoneInput = document.getElementById("phone"),
   cancelBtn = document.getElementById("cancel"),
   saveBtn = document.getElementById("save");
-//end DOM
 
-const apiUrl = "../data/Ipu.json";
+const apiUrl = "./data/Ipu.json";
 const isData = localStorage.getItem("data");
 
 let currentRowIndex = null;
@@ -18,8 +17,6 @@ let currentItem = {};
 let items = [];
 let isNewObject = false;
 let id = 5;
-
-
 
 
 if (isData) {
@@ -97,7 +94,6 @@ addButton.addEventListener("click", () => {
 
 saveBtn.addEventListener("click", (event) => {
   if (isNewObject) {
-
     //create item
     let item = {
       id: ++id,
