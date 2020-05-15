@@ -9,7 +9,7 @@ const form = document.getElementById("form"),
   cancelBtn = document.getElementById("cancel"),
   saveBtn = document.getElementById("save");
 
-const apiUrl = "./data/Ipu.json";
+const apiUrl = "../data/Ipu.json";
 const isData = localStorage.getItem("data");
 
 let currentRowIndex = null;
